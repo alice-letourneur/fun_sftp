@@ -53,9 +53,11 @@ module FunSftp
 
     def read(path) #read a file
       file = client.file.open(clean_path(path))
+      data = ""
       while !file.eof?
-        puts file.gets
+        data = "#{data}#{file.gets}"
       end
+      data
     end
 
     def size(path) #returns the size of a file. ex: => 1413455562
